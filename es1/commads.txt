@@ -1,0 +1,17 @@
+// creazione container e ambiente (in locale)
+docker build -t dash_app .
+
+// lancio del container (in locale)
+docker run -p 8080:80 dash_app
+
+// creazione immagine del container (in locale)
+docker tag dash_app federicorossidocker/dash_app:v1.0
+
+// verifica della creazioen dell'immagine
+docker images
+
+// login
+docker login
+
+// caricamento su dockerhub
+docker push federicorossidocker/dash_app:v1.0

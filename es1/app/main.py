@@ -16,8 +16,6 @@ pwd = 'crossnection21'
 
 conn = None
 cur = None
-# k = []
-# j = []
 data = [[],[],[],[],[],[],[]]
 try:
     print("test docker 3")
@@ -45,11 +43,9 @@ try:
     col1 = culumnsName[0]
     col2 = culumnsName[2]
 
-    query = "SELECT * FROM auto;" # LIMIT 5
-    # query = query.replace("first",col1).replace("second",col2)
+    query = "SELECT * FROM auto;"
+    # le parti testuali non hanno avuto bisogno di essere eliminate
     cur.execute(query)
-    # c1 = 1 # colonna 1
-    # c2 = 2 # colonna 2
     rows = cur.fetchall()
     for row in rows:
         data[0].append(row[0])
@@ -59,9 +55,6 @@ try:
         data[4].append(row[4])
         data[5].append(row[5])
         data[6].append(row[6])
-        # k.append(row[0])
-        # j.append(row[1])
-    # print(data)
 except Exception as error:
     print("test docker exeption")
     print(error)
@@ -157,6 +150,8 @@ def update_graph(col1sel, col2sel):
         j = data[6]
     else:
         j = k
+    
+    # k e j differiscono per come vengono gestiti nel caso null ma non è importante in un caso isolato come questo
     
     fig = px.scatter(x = k, y = j)
     fig.update_layout(xaxis_title=col1sel, yaxis_title=col2sel)
